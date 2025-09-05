@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Details Form</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value.trim();
+            var password = document.getElementById("password").value.trim();
+            var gender = document.querySelector('input[name="g"]:checked');
+            var hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
+            var department = document.getElementById("dept").value;
+            var address = document.getElementById("address").value.trim();
+
+            var nameRegex = /^[A-Za-z\s]{2,}$/;
+
+        if (name === "") {
+            alert("Please enter your name.");
+            return false;
+        }
+
+        if (!nameRegex.test(name)) {
+            alert("Name should contain only letters and spaces, minimum 2 characters.");
+            return false;
+        }
+
+           if (password === "") {
+            alert("Please enter your password.");
+            return false;
+        }
+
+        if (password.length < 8) {
+            alert("Password should be at least 8 characters long.");
+            return false;
+        }
+
+            if (!gender) {
+                alert("Please select your gender.");
+                return false;
+            }
+
+            if (hobbies.length === 0) {
+                alert("Please select at least one hobby.");
+                return false;
+            }
+
+            if (department === "") {
+                alert("Please select a department.");
+                return false;
+            }
+
+            if (address === "") {
+                alert("Please enter your address.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form action="C:\Users\LENOVO\OneDrive\Documents\d\form with validation\submit.html" target="content" onsubmit="return validateForm()">
+        <h2>Student Details</h2>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" size="25" />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" />
+
+        <label>Gender:</label>
+        <label class="options-label">
+            <input type="radio" name="g" value="Male" /> Male
+        </label>
+        <label class="options-label">
+            <input type="radio" name="g" value="Female" /> Female
+        </label>
+
+        <label>Hobbies:</label>
+        <label class="options-label">
+            <input type="checkbox" name="hobbies" value="Reading" /> Reading
+        </label>
+        <label class="options-label">
+            <input type="checkbox" name="hobbies" value="Playing" /> Playing
+        </label>
+
+        <label for="dept">Department:</label>
+        <select id="dept">
+            <option value="">-- Select --</option>
+            <option value="IT">IT</option>
+            <option value="CSE">CSE</option>
+        </select>
+
+        <label for="address">Address:</label>
+        <textarea id="address" rows="4" cols="30"></textarea>
+
+        <div class="buttons">
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </div>
+    </form>
+</body>
+</html>
